@@ -1,0 +1,4 @@
+import { endpointText } from '../../lib/api/endpointTools.js';
+import { reply, replyError, usage } from '../../lib/helpers/reply.js';
+const MAP={github:'/stalk/github',ip:'/stalk/ip',npm:'/stalk/npm',tiktok:'/stalk/tiktok',instagram:'/stalk/instagram',twitter:'/stalk/twitter',telegram:'/stalk/telegram',numberplate:'/stalk/numberplate'};
+export default {name:'stalk',alias:['lookupuser'],description:'Look up supported public profiles/data through the Paxton API.',requires:['WOLVAREX_API_KEY'],async execute(sock,msg,args,prefix){const type=(args.shift()||'').toLowerCase();const q=args.join(' ');if(!MAP[type]||!q)return reply(sock,msg,usage(prefix,'stalk <github|ip|npm|tiktok|instagram|twitter|telegram|numberplate> <value>','stalk github octocat'));try{return reply(sock,msg,`🔎 *${type.toUpperCase()}*\n\n${await endpointText(MAP[type],q)}`)}catch(e){return replyError(sock,msg,e,'stalk')}}};

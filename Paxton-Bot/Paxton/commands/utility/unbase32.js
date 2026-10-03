@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'unbase32', description:'Decode Base32 text.', async execute(sock,msg,args){ const s=(args[0]||'').toUpperCase().replace(/=+$/,''); if(!s) return reply(sock,msg,'Usage: .unbase32 <base32>'); const a='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'; let bits=0,val=0,arr=[]; for(const ch of s){const n=a.indexOf(ch); if(n<0) return reply(sock,msg,'❌ Invalid Base32.'); val=(val<<5)|n;bits+=5;if(bits>=8){arr.push((val>>(bits-8))&255);bits-=8}} return reply(sock,msg,Buffer.from(arr).toString('utf8')); } };

@@ -1,0 +1,1 @@
+export default { name:'urlencode', description:'URL-encode text.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}urlencode <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:encodeURIComponent(t)},{quoted:msg}); } };

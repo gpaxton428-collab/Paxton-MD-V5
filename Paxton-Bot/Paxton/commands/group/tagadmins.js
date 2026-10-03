@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'tagadmins', description:'Group utility: tagadmins.', async execute(sock,msg,args){ const m=await sock.groupMetadata(msg.key.remoteJid); const a=m.participants.filter(p=>p.admin).map(p=>p.id); if(!a.length)return reply(sock,msg,'No admins found.'); return sock.sendMessage(msg.key.remoteJid,{text:'👑 ADMINS',mentions:a},{quoted:msg}); } };

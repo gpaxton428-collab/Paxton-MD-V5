@@ -1,0 +1,1 @@
+export default { name:'upper', description:'Convert text to uppercase.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}upper <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:t.toUpperCase()},{quoted:msg}); } };

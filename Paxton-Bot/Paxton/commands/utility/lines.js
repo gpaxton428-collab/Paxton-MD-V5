@@ -1,0 +1,1 @@
+export default { name:'lines', description:'Count lines in text.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}lines <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:`📄 Lines: ${t.split(/\\n|\\r\\n/).length}`},{quoted:msg}); } };

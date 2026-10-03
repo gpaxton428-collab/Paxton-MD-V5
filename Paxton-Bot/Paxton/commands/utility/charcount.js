@@ -1,0 +1,1 @@
+export default { name:'charcount', description:'Count characters in text.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}charcount <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:`🔢 Characters: ${[...t].length}`},{quoted:msg}); } };

@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'summarize', description:'Summarize supplied text with AI.', async execute(sock,msg,args){ const q=args.join(' '); if(!q)return reply(sock,msg,'Usage: .summarize <text>'); const {getAiReply}=await import('../../lib/aiApi.js'); const r=await getAiReply(`Summarize this text concisely:\n${q}`); return reply(sock,msg,r||'❌ AI unavailable.'); } };

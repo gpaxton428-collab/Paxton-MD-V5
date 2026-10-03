@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'songinfo', description:'Look up a song through Savplay.', async execute(sock,msg,args){ const q=args.join(' '); if(!q)return reply(sock,msg,'Usage: .songinfo <song>'); const {searchAndGetSong}=await import('../../lib/musicApi.js'); const r=await searchAndGetSong(q); return reply(sock,msg,r?`🎵 ${r.title}\n${r.audio}`:'❌ Savplay returned no song.'); } };

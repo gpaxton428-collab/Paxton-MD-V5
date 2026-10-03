@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'explain', description:'Ask AI to explain a topic simply.', async execute(sock,msg,args){ const q=args.join(' '); if(!q)return reply(sock,msg,'Usage: .explain <topic>'); const {getAiReply}=await import('../../lib/aiApi.js'); const r=await getAiReply(`Explain this clearly and simply: ${q}`); return reply(sock,msg,r||'❌ AI unavailable.'); } };

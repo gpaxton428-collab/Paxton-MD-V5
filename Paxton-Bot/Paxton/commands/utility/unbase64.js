@@ -1,0 +1,2 @@
+import { Buffer } from 'buffer';
+export default { name:'unbase64', description:'Decode Base64 text.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}unbase64 <base64>`},{quoted:msg}); try{await sock.sendMessage(msg.key.remoteJid,{text:Buffer.from(t,'base64').toString('utf8')},{quoted:msg});}catch{await sock.sendMessage(msg.key.remoteJid,{text:'❌ Invalid Base64.'},{quoted:msg});} } };

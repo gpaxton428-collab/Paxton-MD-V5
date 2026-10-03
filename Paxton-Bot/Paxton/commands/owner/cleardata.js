@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'cleardata', ownerOnly:true, description:'Owner utility: cleardata.', async execute(sock,msg,args){ const fs=await import('fs'); const path=await import('path'); const targets=['./data/settings.json','./data/group_settings.json']; for(const f of targets)try{fs.unlinkSync(f)}catch{} return reply(sock,msg,'🧹 Runtime settings data cleared. Restart the bot to reload defaults.'); } };

@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'warnlist', description:'Group utility: warnlist.', async execute(sock,msg,args){ const {getGroupSettings}=await import('../../lib/settingsStore.js'); const s=getGroupSettings(msg.key.remoteJid); const rows=Object.entries(s.warnings||{}); return reply(sock,msg,rows.length?'⚠️ WARNINGS\n'+rows.map(([j,n])=>`@${j.split('@')[0]} — ${n}`).join('\n'):'✅ No warnings.'); } };

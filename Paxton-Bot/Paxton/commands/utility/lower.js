@@ -1,0 +1,1 @@
+export default { name:'lower', description:'Convert text to lowercase.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}lower <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:t.toLowerCase()},{quoted:msg}); } };

@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'factors', description:'List positive factors of a number.', async execute(sock,msg,args){ const n=Math.abs(Number(args[0])); if(!Number.isInteger(n)||n<1)return reply(sock,msg,'Usage: .factors <positive integer>'); const f=[];for(let i=1;i*i<=n;i++)if(n%i===0){f.push(i);if(i*i!==n)f.push(n/i)}f.sort((a,b)=>a-b);return reply(sock,msg,f.join(', ')); } };

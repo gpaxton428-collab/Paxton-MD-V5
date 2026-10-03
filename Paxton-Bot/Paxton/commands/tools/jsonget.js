@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'jsonget', description:'Read a top-level value from JSON.', async execute(sock,msg,args){ const raw=args.slice(0,-1).join(' ')||args[0]||''; const key=args.at(-1); if(!raw||!key)return reply(sock,msg,'Usage: .jsonget <json> <key>'); try{return reply(sock,msg,JSON.stringify(JSON.parse(raw)[key]??null,null,2))}catch(e){return reply(sock,msg,'❌ Invalid JSON.')} } };

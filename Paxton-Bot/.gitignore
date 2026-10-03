@@ -1,0 +1,11 @@
+node_modules/
+session/
+auth_info_baileys/
+session-generator/temp_sessions/
+temp_sessions/
+.env
+.env.*
+*.log
+Paxton/database/owner.json
+Paxton/database/*.json
+.DS_Store

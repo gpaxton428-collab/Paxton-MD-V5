@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'brainstorm', description:'Brainstorm ideas with AI.', async execute(sock,msg,args){ const q=args.join(' '); if(!q)return reply(sock,msg,'Usage: .brainstorm <topic>'); const {getAiReply}=await import('../../lib/aiApi.js'); const r=await getAiReply(`Give 8 practical brainstorming ideas for: ${q}`); return reply(sock,msg,r||'❌ AI unavailable.'); } };

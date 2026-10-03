@@ -1,0 +1,1 @@
+export default { name:'wordcount', description:'Count words in text.', async execute(sock,msg,args,prefix){ const t=args.join(' ').trim(); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}wordcount <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:`📝 Words: ${t.split(/\s+/).length}`},{quoted:msg}); } };

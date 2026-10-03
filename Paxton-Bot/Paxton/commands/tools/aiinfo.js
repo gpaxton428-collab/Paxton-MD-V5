@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'aiinfo', description:'Show AI provider configuration without exposing keys.', async execute(sock,msg,args){ const {API_KEYS,ENDPOINTS}=await import('../../endpoints.js'); return reply(sock,msg,`🤖 AI PROVIDER\nWolvarex: ${API_KEYS.wolvarex?'configured':'not configured'}\nOpenAI fallback: ${API_KEYS.openai?'configured':'not configured'}\nAnthropic fallback: ${API_KEYS.anthropic?'configured':'not configured'}\nApix: ${ENDPOINTS.wolvarex}`); } };

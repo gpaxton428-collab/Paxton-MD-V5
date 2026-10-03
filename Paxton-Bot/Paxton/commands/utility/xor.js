@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'xor', description:'XOR each character with a numeric key.', async execute(sock,msg,args){ const t=args.slice(0,-1).join(' ')||args[0]||''; const k=Number(args.at(-1)); if(!t||!Number.isInteger(k)||k<0||k>255)return reply(sock,msg,'Usage: .xor <text> <0-255>'); return reply(sock,msg,Buffer.from([...t].map(c=>c.charCodeAt(0)^k)).toString('base64')); } };

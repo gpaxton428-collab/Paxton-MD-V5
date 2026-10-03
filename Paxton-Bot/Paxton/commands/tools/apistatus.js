@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'apistatus', description:'Check configured API endpoints.', async execute(sock,msg,args){ const {ENDPOINTS}=await import('../../endpoints.js'); const checks=await Promise.all(Object.entries(ENDPOINTS).map(async([n,u])=>{try{const r=await fetch(u,{method:'GET',signal:AbortSignal.timeout(7000)});return `• ${n}: HTTP ${r.status}`}catch(e){return `• ${n}: offline/unreachable`}})); return reply(sock,msg,'🔗 API STATUS\n'+checks.join('\n')); } };

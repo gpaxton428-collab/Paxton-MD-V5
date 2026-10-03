@@ -1,0 +1,1 @@
+export default { name:'reverse', description:'Reverse text.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}reverse <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:[...t].reverse().join('')},{quoted:msg}); } };

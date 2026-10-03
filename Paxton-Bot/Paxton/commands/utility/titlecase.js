@@ -1,0 +1,1 @@
+export default { name:'titlecase', description:'Convert text to title case.', async execute(sock,msg,args,prefix){const t=args.join(' ');if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}titlecase <text>`},{quoted:msg});await sock.sendMessage(msg.key.remoteJid,{text:t.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase())},{quoted:msg});}};

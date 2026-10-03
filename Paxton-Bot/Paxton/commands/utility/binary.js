@@ -1,0 +1,1 @@
+export default { name:'binary', description:'Encode text as binary.', async execute(sock,msg,args,prefix){ const t=args.join(' '); if(!t)return sock.sendMessage(msg.key.remoteJid,{text:`Usage: ${prefix}binary <text>`},{quoted:msg}); await sock.sendMessage(msg.key.remoteJid,{text:[...Buffer.from(t)].map(b=>b.toString(2).padStart(8,'0')).join(' ')},{quoted:msg}); } };

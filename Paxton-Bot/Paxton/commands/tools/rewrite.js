@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'rewrite', description:'Rewrite text with AI.', async execute(sock,msg,args){ const q=args.join(' '); if(!q)return reply(sock,msg,'Usage: .rewrite <text>'); const {getAiReply}=await import('../../lib/aiApi.js'); const r=await getAiReply(`Rewrite this clearly while keeping its meaning:\n${q}`); return reply(sock,msg,r||'❌ AI unavailable.'); } };

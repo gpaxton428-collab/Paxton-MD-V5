@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'base32', description:'Encode text as Base32.', async execute(sock,msg,args){ const t=args.join(' '); if(!t) return reply(sock,msg,'Usage: .base32 <text>'); const b=Buffer.from(t); const alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'; let bits=0,val=0,out=''; for(const x of b){val=(val<<8)|x;bits+=8;while(bits>=5){out+=alpha[(val>>(bits-5))&31];bits-=5}} if(bits) out+=alpha[(val<<(5-bits))&31]; return reply(sock,msg,out); } };

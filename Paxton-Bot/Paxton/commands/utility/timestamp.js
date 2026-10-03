@@ -1,0 +1,1 @@
+export default { name:'timestamp', description:'Show the current Unix timestamp.', async execute(sock,msg){ await sock.sendMessage(msg.key.remoteJid,{text:`🕒 ${Math.floor(Date.now()/1000)}`},{quoted:msg}); } };

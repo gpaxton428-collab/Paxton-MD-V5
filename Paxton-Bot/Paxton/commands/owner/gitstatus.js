@@ -1,0 +1,2 @@
+import { reply } from '../../lib/extraCommands.js';
+export default { name:'gitstatus', ownerOnly:true, description:'Owner utility: gitstatus.', async execute(sock,msg,args){ const {exec}=await import('child_process'); const {promisify}=await import('util'); try{const out=await promisify(exec)('git status --short --branch'); return reply(sock,msg,'🧭 GIT STATUS\n```'+out.stdout.trim().slice(0,3500)+'```')}catch(e){return reply(sock,msg,'❌ Git status failed: '+e.message)} } };

@@ -1,0 +1,2 @@
+import { getGlobalSettings,setGlobalSetting } from '../../lib/settingsStore.js';
+export default { name:'autoreact', ownerOnly:true, description:'Toggle automatic reaction mode.', async execute(sock,msg,args){const v=(args[0]||'').toLowerCase();if(!['on','off'].includes(v)){const s=getGlobalSettings();return sock.sendMessage(msg.key.remoteJid,{text:`⚙️ Auto-react: ${s.autoReact?'ON':'OFF'}\nUsage: .autoreact on|off`},{quoted:msg})}setGlobalSetting('autoReact',v==='on');return sock.sendMessage(msg.key.remoteJid,{text:`✅ Auto-react ${v.toUpperCase()}`},{quoted:msg})} };
